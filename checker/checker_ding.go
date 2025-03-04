@@ -5,7 +5,9 @@ import (
 	"html/template"
 	"io"
 	"log/slog"
+	"math/rand"
 	"net/http"
+	"time"
 )
 
 // Check2DingTalkByFile
@@ -44,6 +46,9 @@ func (c *Checker) Check2DingTalkByDir(dir, su string, days int) error {
 //	@Description: 生成钉钉消息体 发送钉钉消息
 //	@receiver c
 func (c *Checker) dingTalk() {
+	if len(c.ExpireDomain) == 0 && len(c.ThresholdDomain) == 0 {
+		return
+	}
 	tmpl, _ := template.New("").Parse(DingTemplate)
 
 	var buf bytes.Buffer
@@ -55,6 +60,7 @@ func (c *Checker) dingTalk() {
 		return
 	}
 	reader := bytes.NewReader(buf.Bytes())
+	time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 	send(c.Url, reader)
 }
 

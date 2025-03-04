@@ -97,7 +97,6 @@ func (c *Checker) checkCert(file string, days int) error {
 	default:
 		return nil
 	}
-
 	return nil
 }
 

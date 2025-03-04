@@ -40,6 +40,11 @@ func (c *Checker) Check2StdoutByDir(dir, su string, days int) error {
 //	@Description: 控制台打印
 //	@receiver c
 func (c *Checker) stdoutInfo() {
+	if len(c.ExpireDomain) == 0 && len(c.ThresholdDomain) == 0 {
+		fmt.Println("no expire domain or threshold domain")
+		return
+	}
+
 	fmt.Printf("hostname is %s\n", c.EcsInfo.Name)
 	fmt.Printf("wanip is %s\n", c.EcsInfo.WanIp)
 	fmt.Printf("lanip is %s\n", c.EcsInfo.LanIp)
