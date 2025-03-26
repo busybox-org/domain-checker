@@ -70,7 +70,7 @@ func main() {
 	// log flags
 	root.Flags().StringP("log_file", "l", "", "Path to the log file (Optional)")
 	// cron flags
-	root.Flags().String("cron", "0 8  * * 1-5", "Cron expression for automatic execution (Optional)")
+	root.Flags().String("cron", "0 8 * * 1-5", "Cron expression for automatic execution (Optional)")
 	// self update flags
 	root.Flags().String("self_url", "https://oss.yfdou.com/tools/cert-checker", "URL for self-update (Optional)")
 
