@@ -100,6 +100,7 @@ func (p *sProgram) Start(service.Service) error {
 		for _, v := range res {
 			if v.ExpiredDays < 0 {
 				data["ExpireDomain"] = append(data["ExpireDomain"].([]any), map[string]any{
+					"Path":        v.Path,
 					"DomainName":  v.DomainName,
 					"ExpiredDays": v.ExpiredDays,
 				})
@@ -107,6 +108,7 @@ func (p *sProgram) Start(service.Service) error {
 			}
 			if v.ExpiredDays <= days {
 				data["ThresholdDomain"] = append(data["ThresholdDomain"].([]any), map[string]any{
+					"Path":        v.Path,
 					"DomainName":  v.DomainName,
 					"ExpiredDays": v.ExpiredDays,
 				})
