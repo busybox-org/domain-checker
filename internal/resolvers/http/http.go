@@ -57,3 +57,7 @@ func (p HTTPDetector) RetrieveIP() (*base.ScoredIP, error) {
 func (p HTTPDetector) String() string {
 	return p.URL
 }
+
+func (p HTTPDetector) Type() string {
+	return "HTTP"
+}

@@ -9,7 +9,7 @@ import (
 	"net"
 	"strconv"
 
-	"gortc.io/stun"
+	"github.com/pion/stun"
 
 	"github.com/busybox-org/cert-checker/internal/resolvers/base"
 )
@@ -30,7 +30,7 @@ func (p STUNDetector) RetrieveIP() (*base.ScoredIP, error) {
 	}
 	scheme := uri.Scheme
 	address := uri.Host + ":" + strconv.Itoa(uri.Port)
-	if scheme == stun.SchemeSecure {
+	if scheme == stun.SchemeTypeSTUNS {
 		cfg := &tls.Config{
 			ServerName: uri.Host,
 		}
@@ -64,7 +64,7 @@ func (p STUNDetector) RetrieveIP() (*base.ScoredIP, error) {
 		return nil, &base.NotRetrievedError{}
 	}
 	defer c.Close()
-	if scheme == stun.SchemeSecure {
+	if scheme == stun.SchemeTypeSTUNS {
 		return &base.ScoredIP{IP: ip, Score: 1.0}, nil
 	} else {
 		return &base.ScoredIP{IP: ip, Score: 0.1}, nil
@@ -73,4 +73,8 @@ func (p STUNDetector) RetrieveIP() (*base.ScoredIP, error) {
 
 func (p STUNDetector) String() string {
 	return fmt.Sprintf("%s", p.Host)
+}
+
+func (p STUNDetector) Type() string {
+	return "STUN"
 }

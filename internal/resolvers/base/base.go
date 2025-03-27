@@ -41,6 +41,7 @@ type ScoredIPWithMaxScore struct {
 type IPRetrievable interface {
 	RetrieveIP() (*ScoredIP, error)
 	String() string
+	Type() string
 }
 
 type ScoredIPRetrievable struct {

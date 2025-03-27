@@ -7,6 +7,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/xmapst/logx"
+
 	"github.com/busybox-org/cert-checker/internal/resolvers/base"
 	"github.com/busybox-org/cert-checker/internal/resolvers/targets"
 )
@@ -71,6 +73,7 @@ func optimizedRetrieve(timeout time.Duration, threshold float64) (*base.ScoredIP
 			if err != nil {
 				return
 			}
+			logx.Infof("Retrieved IP: %s, Type: %s, Score: %.2f %s", sip.IP, sipr.IPRetrievable.Type(), sip.Score, sipr.String())
 			// 将结果发送到通道（若 ctx 已取消，则不阻塞发送）
 			select {
 			case results <- *sip:

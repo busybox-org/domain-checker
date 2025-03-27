@@ -6,11 +6,11 @@ require (
 	github.com/imroc/req/v3 v3.50.0
 	github.com/kardianos/service v1.2.2
 	github.com/miekg/dns v1.1.64
+	github.com/pion/stun v0.6.1
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/pflag v1.0.6
 	github.com/xmapst/logx v1.0.4
-	gortc.io/stun v1.23.0
 )
 
 require (
@@ -24,6 +24,9 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/klauspost/compress v1.18.0 // indirect
 	github.com/onsi/ginkgo/v2 v2.23.3 // indirect
+	github.com/pion/dtls/v2 v2.2.7 // indirect
+	github.com/pion/logging v0.2.2 // indirect
+	github.com/pion/transport/v2 v2.2.1 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/quic-go/quic-go v0.50.1 // indirect
 	github.com/refraction-networking/utls v1.6.7 // indirect
